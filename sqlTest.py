@@ -1,10 +1,6 @@
-import sqlite3
-from sqlite3.dbapi2 import connect
-from DATACLASS import nomFichier
-import logging
-import json
-import tempfile
-
+from DATACLASS import DATA
+import sqlite3, json, tempfile, logging, os
+from _vars import loadJson, dumpJson
 
 def sql_db_creation():
     try:
@@ -26,20 +22,12 @@ def sql_db_creation():
 
 def save_to_sql():
     try:
-        #Sauvegarde dans la db
+        dataDict = loadJson()
         conn = sqlite3.connect("pass_data.db")
         c = conn.cursor()
-        with tempfile.TemporaryFile() as f:
-            testDict = f.read()
-        with open(nomFichier, "r") as f:
-            dataDict = json.load(f)
-        print(dataDict)
         c.executemany("""INSERT INTO pass_data VALUES (?,?)""",dataDict)
         conn.commit()
         conn.close()
-
-        #Suppression du fichier json
-
     except json.JSONDecodeError as er:
         logging.error(f"Erreur de décodage json : {er.msg}")
     except sqlite3.Error as er:
@@ -55,16 +43,11 @@ def get_from_sql():
         c.execute("SELECT * FROM pass_data")
         newDatadict = c.fetchall()
         conn.close()
-        with open(nomFichier, "w") as f:
-            json.dump(newDatadict, f, indent=4)
-        
-
+        dumpJson(newDatadict)
     except sqlite3.Error as er:
         logging.error(f"Erreur lors de la recuperation des données: {er}")
     else:
         logging.info("Données recuperées avec success")
-    
-    return newDatadict
 
 
     

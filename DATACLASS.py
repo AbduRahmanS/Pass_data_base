@@ -1,13 +1,10 @@
-import os
-import json
-import logging
+import json, logging
+from _vars import loadJson, dumpJson
+
 
 logging.basicConfig(filename='journal.log', level=logging.DEBUG, format='%(asctime)s : %(levelname)s --> %(message)s')
 logging.debug('Exécution du programme reussie !')
 
-
-
-nomFichier = "Data.json"
 
 class DATA:
     def __init__(self, siteName, login, password):
@@ -20,16 +17,10 @@ class DATA:
         return _dict
     
     def get_data(self):
-        if os.path.exists(nomFichier):
-            with open(nomFichier, "r") as f:
-                dataDict = json.load(f)
-        else:       
-            dataDict = {}
-        return dataDict
+        return loadJson()
     
     def save_data(self, datas):
-        with open(nomFichier, "w") as f:
-            json.dump(datas, f, indent=4)
+        dumpJson(datas)
 
 
     def add_data(self):

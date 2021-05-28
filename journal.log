@@ -1,0 +1,13 @@
+2021-05-26 20:32:35,197 : DEBUG --> Exécution du programme reussie !
+2021-05-26 20:33:29,380 : DEBUG --> Exécution du programme reussie !
+2021-05-28 00:47:34,173 : DEBUG --> Exécution du programme reussie !
+2021-05-28 00:47:34,254 : ERROR --> Erreur lors de la recuperation des données: no such table: pass_data
+2021-05-28 00:50:53,968 : DEBUG --> Exécution du programme reussie !
+2021-05-28 00:50:53,995 : ERROR --> Erreur lors de la recuperation des données: no such table: pass_data
+2021-05-28 01:20:31,856 : DEBUG --> Exécution du programme reussie !
+2021-05-28 01:20:31,892 : ERROR --> Erreur lors de la recuperation des données: no such table: pass_data
+2021-05-28 01:26:01,751 : DEBUG --> Exécution du programme reussie !
+2021-05-28 01:26:01,789 : ERROR --> Erreur lors de la recuperation des données: no such table: pass_data
+2021-05-28 01:28:43,669 : DEBUG --> Exécution du programme reussie !
+2021-05-28 01:40:42,799 : DEBUG --> Exécution du programme reussie !
+2021-05-28 01:40:42,842 : ERROR --> Erreur lors de la recuperation des données: no such table: pass_data

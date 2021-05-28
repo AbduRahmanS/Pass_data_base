@@ -10,10 +10,13 @@ Note :
 
 """
 
-import logging
+import os, logging, tempfile, shutil
 from DATACLASS import DATA
+from sqlTest import save_to_sql, get_from_sql
+from _vars import tempdir
 
 
+get_from_sql()
 action = DATA("","","")
 continuer = 0
 while continuer != 5:
@@ -57,6 +60,8 @@ while continuer != 5:
             else:
                 logging.warning("Ce site n'est pas dans la base")
     elif continuer == 6:
+        save_to_sql()
+        shutil.rmtree(tempdir)
         break
     else:
         print("Erreur Choix indisponible")
