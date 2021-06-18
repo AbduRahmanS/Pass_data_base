@@ -2,6 +2,9 @@ from DATACLASS import DATA
 import sqlite3, json, tempfile, logging, os
 from _vars import loadJson, dumpJson
 
+
+tempdir = function
+
 def sql_db_creation():
     try:
         conn = sqlite3.connect("pass_data.db")
@@ -22,7 +25,13 @@ def sql_db_creation():
 
 def save_to_sql():
     try:
-        dataDict = loadJson()
+        if os.path.exists(jsonFilePath):
+            with open(jsonFilePath, "r") as f:
+                dataDict = json.load(f)
+            return dataDict
+        else:
+            logging.error(f"Fichier temporaire introuvable")
+
         conn = sqlite3.connect("pass_data.db")
         c = conn.cursor()
         c.executemany("""INSERT INTO pass_data VALUES (?,?)""",dataDict)
@@ -37,15 +46,23 @@ def save_to_sql():
 
 
 def get_from_sql():
+    tempdir = tempfile.mkdtemp()
+    global jsonFilePath
+    jsonFilePath = os.path.join(tempdir, 'data.json')
     try:
         conn = sqlite3.connect("pass_data.db")
         c = conn.cursor()
         c.execute("SELECT * FROM pass_data")
         newDatadict = c.fetchall()
         conn.close()
-        dumpJson(newDatadict)
+        with open (jsonFilePath, "w") as f:
+            json.dump(newDatadict,f, indent=4)
+    
     except sqlite3.Error as er:
         logging.error(f"Erreur lors de la recuperation des données: {er}")
+    
+    except os.error as er:
+        logging.error(f"Erreur Système : {er}")
     else:
         logging.info("Données recuperées avec success")
 

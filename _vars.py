@@ -6,7 +6,7 @@ jsonFilePath = os.path.join(tempdir + '/Data.json')
 
 
 def loadJson():
-    if not os.path.exists(jsonFilePath):
+    if os.path.exists(jsonFilePath):
         with open(jsonFilePath, "r") as f:
             dataDict = json.load(f)
         
