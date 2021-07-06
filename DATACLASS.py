@@ -1,3 +1,4 @@
+from ast import With
 import json
 import logging
 import os
@@ -8,27 +9,33 @@ logging.debug('Exécution du programme reussie !')
 
 
 class DATA:
-    tempdir = tempfile.mkdtemp()
+    tempdir = tempfile.mkdtemp(suffix="pass_data")
     jsonFilePath = os.path.join(tempdir + '/Data.json')
 
-    # def __str__(self):
-    #     _dict = {self.siteName: {'Login': self.login, 'Password': self.password}}
-    #     return _dict
-
     @classmethod
-    def get_data(cls):
+    def get_data(cls) -> dict:
         if os.path.exists(cls.jsonFilePath):
             with open(cls.jsonFilePath, "r") as f:
-                data_dict = json.load(f)
+                data_dict = json.load(f)        
             return data_dict
+        else:
+            data_dict = {}
+            with open(cls.jsonFilePath,"w") as f:
+                json.dump(data_dict, f)
 
     @classmethod
     def save_data(cls, datas):
         with open(cls.jsonFilePath, 'w') as f:
             json.dump(datas, f, indent=4)
+            
+    @classmethod
+    def del_tempdir(cls):
+        with open(cls.tempdir, 'r') as f:
+            pass
+
 
     @staticmethod
-    def add_data(site_name, login, password):  # sourcery skip: dict-literal
+    def add_data(site_name, login, password)    :  # sourcery skip: dict-literal
         datas = DATA.get_data()
         if site_name not in datas:
             datas[site_name] = {'Login': login, 'Password': password}
@@ -38,7 +45,7 @@ class DATA:
         else:
             logging.warning(f'le site {site_name} existe déja')
             return False
-
+        
     @staticmethod
     def remove_data(nom_site):
         datas = DATA.get_data()
@@ -66,4 +73,10 @@ class DATA:
 
 
 if __name__ == '__main__':
-    print(DATA.jsonFilePath)
+    DATA.add_data("test_site","testlogin","testpassword")
+    DATA.add_data("site1","login1","password1")
+    DATA.set_data("site1", "login2", "password2")
+    DATA.remove_data("test_site")
+    
+    print(DATA.get_data())
+    

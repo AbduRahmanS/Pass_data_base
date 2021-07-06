@@ -19,3 +19,27 @@
 2021-06-18 12:11:13,664 : INFO --> Enregistrement Effectuée
 2021-06-18 12:12:14,008 : DEBUG --> Exécution du programme reussie !
 2021-06-18 12:15:15,530 : DEBUG --> Exécution du programme reussie !
+2021-06-22 17:51:14,677 : DEBUG --> Exécution du programme reussie !
+2021-06-22 18:02:03,708 : DEBUG --> Exécution du programme reussie !
+2021-06-22 18:02:13,937 : DEBUG --> Exécution du programme reussie !
+2021-06-22 18:04:51,895 : DEBUG --> Exécution du programme reussie !
+2021-06-22 18:06:18,655 : DEBUG --> Exécution du programme reussie !
+2021-06-22 18:06:35,232 : DEBUG --> Exécution du programme reussie !
+2021-06-26 17:27:45,773 : DEBUG --> Exécution du programme reussie !
+2021-06-26 17:29:00,342 : DEBUG --> pickle loaded: /usr/lib/python3/dist-packages/jedi/third_party/typeshed/stdlib/2and3/builtins.pyi
+2021-06-26 17:29:00,393 : DEBUG --> pickle loaded: /usr/lib/python3/dist-packages/jedi/third_party/typeshed/stdlib/3/sys.pyi
+2021-06-26 17:32:52,550 : DEBUG --> Exécution du programme reussie !
+2021-06-26 17:33:30,319 : DEBUG --> Exécution du programme reussie !
+2021-06-26 17:33:54,323 : DEBUG --> Exécution du programme reussie !
+2021-06-26 17:35:41,037 : DEBUG --> Exécution du programme reussie !
+2021-06-26 17:36:13,901 : DEBUG --> Exécution du programme reussie !
+2021-07-01 19:24:09,382 : DEBUG --> Exécution du programme reussie !
+2021-07-02 16:50:41,485 : DEBUG --> Exécution du programme reussie !
+2021-07-02 17:23:18,357 : DEBUG --> Exécution du programme reussie !
+2021-07-02 17:25:33,847 : DEBUG --> Exécution du programme reussie !
+2021-07-02 17:26:22,357 : DEBUG --> Exécution du programme reussie !
+2021-07-02 20:08:40,694 : DEBUG --> Exécution du programme reussie !
+2021-07-05 00:06:20,963 : DEBUG --> Exécution du programme reussie !
+2021-07-05 00:15:03,908 : DEBUG --> Exécution du programme reussie !
+2021-07-05 00:33:38,357 : DEBUG --> Exécution du programme reussie !
+2021-07-05 19:48:20,802 : DEBUG --> Exécution du programme reussie !

@@ -1,9 +1,14 @@
+from hashlib import new
 from DATACLASS import DATA
-import sqlite3, json, tempfile, logging, os
-from _vars import loadJson, dumpJson
+import sqlite3
+import json
+import tempfile
+import logging
+import os
 
 
 tempdir = function
+
 
 def sql_db_creation():
     try:
@@ -23,15 +28,9 @@ def sql_db_creation():
         logging.info("Connexion à la base reussie")
 
 
-def save_to_sql():
+def save_to_sql():  # sourcery skip
     try:
-        if os.path.exists(jsonFilePath):
-            with open(jsonFilePath, "r") as f:
-                dataDict = json.load(f)
-            return dataDict
-        else:
-            logging.error(f"Fichier temporaire introuvable")
-
+        dataDict = DATA.get_data()
         conn = sqlite3.connect("pass_data.db")
         c = conn.cursor()
         c.executemany("""INSERT INTO pass_data VALUES (?,?)""",dataDict)
@@ -45,35 +44,24 @@ def save_to_sql():
         logging.info("Données sauvegarder avec Success")
 
 
-def get_from_sql():
-    tempdir = tempfile.mkdtemp()
-    global jsonFilePath
-    jsonFilePath = os.path.join(tempdir, 'data.json')
+def get_from_sql():  # sourcery skip
     try:
         conn = sqlite3.connect("pass_data.db")
         c = conn.cursor()
         c.execute("SELECT * FROM pass_data")
         newDatadict = c.fetchall()
         conn.close()
-        with open (jsonFilePath, "w") as f:
-            json.dump(newDatadict,f, indent=4)
-    
+        return newDatadict
     except sqlite3.Error as er:
         logging.error(f"Erreur lors de la recuperation des données: {er}")
-    
+
     except os.error as er:
         logging.error(f"Erreur Système : {er}")
     else:
         logging.info("Données recuperées avec success")
 
 
-    
-
-
-
-
-
-
 if __name__ == "__main__":
     save_to_sql()
-    get_from_sql()
+    test = get_from_sql()
+    DATA.save_data(test)
