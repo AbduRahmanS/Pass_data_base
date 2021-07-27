@@ -1,4 +1,3 @@
-from ast import With
 import json
 import logging
 import os
@@ -17,11 +16,10 @@ class DATA:
         if os.path.exists(cls.jsonFilePath):
             with open(cls.jsonFilePath, "r") as f:
                 data_dict = json.load(f)        
-            return data_dict
         else:
             data_dict = {}
-            with open(cls.jsonFilePath,"w") as f:
-                json.dump(data_dict, f)
+        
+        return data_dict
 
     @classmethod
     def save_data(cls, datas):

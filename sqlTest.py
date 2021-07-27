@@ -1,13 +1,10 @@
-from hashlib import new
 from DATACLASS import DATA
 import sqlite3
 import json
-import tempfile
 import logging
 import os
 
 
-tempdir = function
 
 
 def sql_db_creation():
