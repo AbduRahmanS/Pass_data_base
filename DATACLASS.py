@@ -77,4 +77,6 @@ if __name__ == '__main__':
     DATA.remove_data("test_site")
     
     print(DATA.get_data())
+    print(DATA.jsonFilePath)
+
     

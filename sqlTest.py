@@ -27,7 +27,7 @@ def sql_db_creation():
 
 def save_to_sql():  # sourcery skip
     try:
-        dataDict = DATA.get_data()
+        dataDict: dict = DATA.get_data()
         conn = sqlite3.connect("pass_data.db")
         c = conn.cursor()
         c.executemany("""INSERT INTO pass_data VALUES (?,?)""",dataDict)
